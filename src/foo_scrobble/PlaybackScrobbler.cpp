@@ -159,6 +159,15 @@ public:
         track.format_title(nullptr, TrackNumber, formatContext.GetTrackNumberFormat(),
                            nullptr);
 
+        if (Artist.replace_string("[unknown]", "Anonymous") ||
+            Artist.replace_string("[no artist]", "Unspecified")) {
+            FB2K_console_formatter() << "foo_scrobble: Replaced a blacklisted term in the artist name.";
+        }
+        if (AlbumArtist.replace_string("[unknown]", "Anonymous") ||
+            AlbumArtist.replace_string("[no artist]", "Unspecified")) {
+            FB2K_console_formatter() << "foo_scrobble: Replaced a blacklisted term in the album artist name.";
+        }
+
         auto const skipFormat = formatContext.GetSkipSubmissionFormat();
         if (!skipFormat.is_empty()) {
             pfc::string8_fast skip;
@@ -185,6 +194,11 @@ public:
         AlbumArtist.force_reset();
         TrackNumber.force_reset();
         MusicBrainzId.force_reset();
+
+        if (Artist.replace_string("[unknown]", "Anonymous") ||
+            Artist.replace_string("[no artist]", "Unspecified")) {
+            FB2K_console_formatter() << "foo_scrobble: Replaced a blacklisted term in the artist name.";
+        }
 
         auto const skipFormat = formatContext.GetSkipSubmissionFormat();
         if (!skipFormat.is_empty()) {
