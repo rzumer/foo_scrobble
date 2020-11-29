@@ -20,6 +20,7 @@ public:
     bool EnableNowPlaying;
     bool SubmitOnlyInLibrary;
     bool SubmitDynamicSources;
+    bool SubmitShortTracks;
 
     pfc::string8 ArtistMapping;
     pfc::string8 TitleMapping;

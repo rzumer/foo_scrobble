@@ -10,6 +10,7 @@
 #define IDC_ENABLE_NOW_PLAYING          1102
 #define IDC_SUBMIT_ONLY_IN_LIBRARY      1103
 #define IDC_SUBMIT_DYNAMIC_SOURCES      1104
+#define IDC_SUBMIT_SHORT_TRACKS         1106
 #define IDC_MAPPING_GROUP               1200
 #define IDC_ARTIST_MAPPING              1201
 #define IDC_ARTIST_MAPPING_EDIT         1202
@@ -28,7 +29,7 @@
 #define IDC_CANCEL_AUTH                 40001
 
 // Next default values for new objects
-//
+// 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        105

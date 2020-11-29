@@ -13,6 +13,7 @@ ScrobbleConfig::ScrobbleConfig()
     , EnableNowPlaying(true)
     , SubmitOnlyInLibrary(false)
     , SubmitDynamicSources(true)
+    , SubmitShortTracks(false)
     , ArtistMapping(DefaultArtistMapping)
     , TitleMapping(DefaultTitleMapping)
     , AlbumMapping(DefaultAlbumMapping)
@@ -29,6 +30,7 @@ void ScrobbleConfig::get_data_raw(stream_writer* p_stream, abort_callback& p_abo
     p_stream->write_lendian_t(EnableNowPlaying, p_abort);
     p_stream->write_lendian_t(SubmitOnlyInLibrary, p_abort);
     p_stream->write_lendian_t(SubmitDynamicSources, p_abort);
+    p_stream->write_lendian_t(SubmitShortTracks, p_abort);
 
     p_stream->write_string(ArtistMapping, p_abort);
     p_stream->write_string(TitleMapping, p_abort);
@@ -47,6 +49,7 @@ void SetDataV1(ScrobbleConfig& cfg, stream_reader* p_stream, abort_callback& p_a
     p_stream->read_lendian_t(cfg.EnableNowPlaying, p_abort);
     p_stream->read_lendian_t(cfg.SubmitOnlyInLibrary, p_abort);
     p_stream->read_lendian_t(cfg.SubmitDynamicSources, p_abort);
+    p_stream->read_lendian_t(cfg.SubmitShortTracks, p_abort);
 
     p_stream->read_string(cfg.ArtistMapping, p_abort);
     p_stream->read_string(cfg.TitleMapping, p_abort);
@@ -64,6 +67,7 @@ void SetDataV2(ScrobbleConfig& cfg, stream_reader* p_stream, abort_callback& p_a
     p_stream->read_lendian_t(cfg.EnableNowPlaying, p_abort);
     p_stream->read_lendian_t(cfg.SubmitOnlyInLibrary, p_abort);
     p_stream->read_lendian_t(cfg.SubmitDynamicSources, p_abort);
+    p_stream->read_lendian_t(cfg.SubmitShortTracks, p_abort);
 
     p_stream->read_string(cfg.ArtistMapping, p_abort);
     p_stream->read_string(cfg.TitleMapping, p_abort);

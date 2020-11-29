@@ -62,6 +62,7 @@ public:
     COMMAND_HANDLER_EX(IDC_ENABLE_NOW_PLAYING, BN_CLICKED, OnEditChange)
     COMMAND_HANDLER_EX(IDC_SUBMIT_ONLY_IN_LIBRARY, BN_CLICKED, OnEditChange)
     COMMAND_HANDLER_EX(IDC_SUBMIT_DYNAMIC_SOURCES, BN_CLICKED, OnEditChange)
+    COMMAND_HANDLER_EX(IDC_SUBMIT_SHORT_TRACKS, BN_CLICKED, OnEditChange)
     COMMAND_HANDLER_EX(IDC_ALBUM_ARTIST_MAPPING_EDIT, EN_CHANGE, OnEditChange)
     COMMAND_HANDLER_EX(IDC_ALBUM_MAPPING_EDIT, EN_CHANGE, OnEditChange)
     COMMAND_HANDLER_EX(IDC_ARTIST_MAPPING_EDIT, EN_CHANGE, OnEditChange)
@@ -98,6 +99,7 @@ BOOL ScrobblerPreferencesDialog::OnInitDialog(CWindow /*wndFocus*/, LPARAM /*lIn
     bindings_.Bind(config_.EnableNowPlaying, m_hWnd, IDC_ENABLE_NOW_PLAYING);
     bindings_.Bind(config_.SubmitOnlyInLibrary, m_hWnd, IDC_SUBMIT_ONLY_IN_LIBRARY);
     bindings_.Bind(config_.SubmitDynamicSources, m_hWnd, IDC_SUBMIT_DYNAMIC_SOURCES);
+    bindings_.Bind(config_.SubmitShortTracks, m_hWnd, IDC_SUBMIT_SHORT_TRACKS);
     bindings_.Bind(config_.ArtistMapping, m_hWnd, IDC_ARTIST_MAPPING_EDIT);
     bindings_.Bind(config_.AlbumArtistMapping, m_hWnd, IDC_ALBUM_ARTIST_MAPPING_EDIT);
     bindings_.Bind(config_.AlbumMapping, m_hWnd, IDC_ALBUM_MAPPING_EDIT);
@@ -210,6 +212,7 @@ void ScrobblerPreferencesDialog::reset()
     CheckDlgButton(IDC_ENABLE_NOW_PLAYING, BST_CHECKED);
     CheckDlgButton(IDC_SUBMIT_ONLY_IN_LIBRARY, BST_UNCHECKED);
     CheckDlgButton(IDC_SUBMIT_DYNAMIC_SOURCES, BST_CHECKED);
+    CheckDlgButton(IDC_SUBMIT_SHORT_TRACKS, BST_UNCHECKED);
     uSetDlgItemText(m_hWnd, IDC_ARTIST_MAPPING_EDIT, DefaultArtistMapping);
     uSetDlgItemText(m_hWnd, IDC_ALBUM_ARTIST_MAPPING_EDIT, DefaultAlbumArtistMapping);
     uSetDlgItemText(m_hWnd, IDC_ALBUM_MAPPING_EDIT, DefaultAlbumMapping);

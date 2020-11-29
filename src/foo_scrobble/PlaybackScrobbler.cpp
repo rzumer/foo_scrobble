@@ -373,8 +373,12 @@ unsigned int PlaybackScrobbler::get_flags()
 
 void PlaybackScrobbler::FlushCurrentTrack()
 {
-    if (isScrobbling_ && pendingTrack_.CanScrobble(accumulatedPlaybackTime_, true))
+    if (isScrobbling_ && pendingTrack_.CanScrobble(accumulatedPlaybackTime_, true)) {
+        if (config_.SubmitShortTracks) {
+            pendingTrack_.Duration = std::max(pendingTrack_.Duration, SecondsD{30.0});
+        }
         GetScrobbleService().ScrobbleAsync(std::move(static_cast<Track&>(pendingTrack_)));
+    }
 
     accumulatedPlaybackTime_ = SecondsD::zero();
     lastPlaybackTime_ = SecondsD::zero();
